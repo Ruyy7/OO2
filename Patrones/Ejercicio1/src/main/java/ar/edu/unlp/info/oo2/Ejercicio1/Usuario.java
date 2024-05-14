@@ -34,7 +34,7 @@ public class Usuario {
 		return this.tweets.stream().anyMatch(t -> t.equals(tweet));
 	}
 	
-	public boolean cumpleLongitud(String texto) {
+	private boolean cumpleLongitud(String texto) {
 		return texto.length() >= 1 && texto.length()<= 280;
 	}
 
