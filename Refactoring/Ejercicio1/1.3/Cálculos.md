@@ -19,3 +19,20 @@ public void imprimirValores() {
 			
 }
 ```
+Este caso se puede identificar un ***"Long method"***, es mejor separar en métodos mas pequeños que realizen cálculos mas simples y que trabajen en conjunto; de paso esto favorece al rehuso de métodos, si tenemos solo un método muy grande este sería mas difícil de ser reutilizar. 
+
+```java
+public double promedioEdades(){
+	return this.personal.stream().mapToDouble(empleado -> empleado.getEdad()).average().orElse(0);
+}
+
+public double totalSalarios(){
+	return this.personal.stream().mapToDouble(empleado -> empleado.getSalario()).sum();
+}
+
+public void imprimirValores(){
+	System.out.println("El promedio de las edades es " + this.promedioEdades() + " y el total de salarios es " + totalSalarios());
+}
+```
+***Aclaración***
+Asumo que "personal" es una colección de empleados y, por ende, hago uso de stream(). También se puede realizar con el foreach de Java.
