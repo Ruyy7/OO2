@@ -35,4 +35,12 @@ public void imprimirValores(){
 }
 ```
 ***Aclaración***
-Asumo que "personal" es una colección de empleados y, por ende, hago uso de stream(). También se puede realizar con el foreach de Java.
+- Asumo que "personal" es una colección de empleados y, por ende, hago uso de stream(). También se puede realizar con el foreach de Java, en cuyo caso implementariamos un método adicional para obtener la suma de todas las edades (public double sumaEdades()).
+
+Se puede discutir que el método imprimirValores() no es muy descriptivo. En cuyo caso el método imprimirValores() lo podríamos llamar:
+
+```java
+public void imprimirPromedioEdadYTotalSalarios(){
+	System.out.println("El promedio de las edades es " + this.promedioEdades() + " y el total de salarios es " + totalSalarios());
+}	
+```
