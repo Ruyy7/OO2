@@ -162,5 +162,50 @@ public class Jugador {
   }
 }
 ```
+No hace mucho sentido cambiar el nombre y el apeliido una vez creado, podríamos quitar los setters.
 
 
+```java
+public class Juego {
+    public void incrementarPuntosJugador(Jugador j){
+        j.incrementarPuntos();
+    }
+
+    public void decrementarPuntosJugador(Jugador j){
+        j.decrementarPuntos();
+    }
+}
+
+public class Jugador {
+    private String nombre;
+    private String apellido;
+    private int puntuacion = 0;
+
+    public Jugador (String nombre, String apellido, int puntuacion){
+        this.nombre = nombre;
+        this.apeliido = apellido;
+        this.puntuacion = puntuacion; // O tambien quitar puntuacion del constructor y inicializarla dentro del mismo en 0.
+    }
+
+    public void incrementarPuntos() {
+        j.puntuacion += 100;
+    }
+    public void decrementarPuntos() {
+        j.puntuacion -= 50;
+    }
+
+  	public String getNombre() {
+  		return nombre;
+  	}
+  	public String getApellido() {
+  		return apellido;
+  	}
+  	public int getPuntuacion() {
+  		return puntuacion;
+  	}
+  	public void setPuntuacion(int puntuacion) {
+  		this.puntuacion = puntuacion;
+  	}
+  }
+}
+```
