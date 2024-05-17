@@ -258,7 +258,9 @@ public class EmpleadoPasante {
 Antes de continuar podríamos discutir que Empleado Temporario y Planta podría aplicarse Pull Up Method por la variable cantHijos. En este caso no lo veo tan conveniente, podría ser un caso de sobre ingenieria.
 
 (i) Las variables estan inicializadas en vez de usar constructores.
+
 (ii) No hay como tal un refactoring que trate esto.
+
 (iii) Sin querer lo aplique en el ejemplo anterior :P es facil darse cuenta aún asi. Repito el código.
 
 ```java
@@ -364,6 +366,7 @@ public class EmpleadoPasante {
 }
 ```
 (i) Se aplica el mismo descuento en todos los empleados.
+
 (ii) Aplico Extract Method para el descuento y el mismo aplico Pull Up enviandolo a la clase empleado ***(A chequear la explicación que di)***. Y por último From Template Method para calcular el sueldo de cualquier empleado.
 
 ```java
