@@ -1,6 +1,7 @@
 # 2.3 Publicaciones
 ![image](https://github.com/Ruyy7/OO2/assets/87097965/76a89993-1dbb-4fe5-a18f-28d69187c091)
 
+### Clase PostApp
 ```java
 public class PostApp{
         private List<Post> post;
@@ -41,6 +42,7 @@ public class PostApp{
 (i) El nombre del método no describe con exactitud lo que realiza.
 (ii) Rename method.
 
+### Clase PostApp
 ```java
 public class PostApp{
         private List<Post> post;
@@ -88,6 +90,7 @@ Podemos separarlo en 3 métodos mas especializados en una tarea.
 - Ordenar por fecha
 - Ultimos N post
 
+### Clase PostApp
 ```java
 public class PostApp{
         private List<Post> post;
@@ -131,6 +134,7 @@ public class PostApp{
 - Las variables temporales se eliminan.
 - Varias lineas de código son remplazadas por el pipeline adecuado.
 
+### Clase PostApp
 ```java
 public class PostApp{
         private List<Post> post;
@@ -151,6 +155,7 @@ public class PostApp{
 
 (ii) Move method. Es el post quien sabra determinar si un usuario es perteneciente del mismo.
 
+### Clase PostApp
 ```java
 public class PostApp{
         private List<Post> post;
@@ -166,7 +171,10 @@ public class PostApp{
             return listaPost.stream().limit(cantidad)collect(Collectors.toList());
         }
 }
+```
 
+### Clase Post
+```java
 public class Post{
         private String texto;
         private LocalDateTime fecha;
