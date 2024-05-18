@@ -53,3 +53,21 @@ public class Cliente {
 - Primero hay que identificar si una clase tiene un atributo que represente un tipo.
 - Segundo y último se realizan las subclases. En este caso existen dos tipos de clientes: Persona fija y Persona jurídica. Como no existen clientes sin tipo que tengan comportamiento, la clase Cliente pasa a ser abstracta.
 
+***Aclaración***: El siguiente es código intermedio, recalco el hecho de leer el orden en que se fue refactorizando.
+
+- PersonaFisica
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+public class PersonaFisica extends Cliente {
+
+}
+```
+- PersonaJuridica
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+public class PersonaFisica extends Cliente {
+
+}
+```
