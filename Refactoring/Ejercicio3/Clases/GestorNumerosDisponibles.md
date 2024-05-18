@@ -49,3 +49,106 @@ public class GestorNumerosDisponibles {
 
 ***A considerar***: Si bien en el escenario original no exisite la clase generador, se podría discutir que la clase ```GestorNumerosDisponibles``` es una clase envidiosa la cual estaría realizando tareas que le corresponder a un "Generador".
 
+- Interfaz Generador
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+import java.util.SortedSet;
+
+public interface Generador {
+	String obtenerNumeroLibre(SortedSet<String> lineas);
+}
+```
+
+- Ultimo
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+import java.util.SortedSet;
+
+public class Ultimo implements Generador {
+
+	@Override
+	public String obtenerNumeroLibre(SortedSet<String> lineas) {
+		String linea = lineas.last();
+		lineas.remove(linea);
+		return linea;
+	}
+
+}
+```
+- Primero
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+import java.util.SortedSet;
+
+public class Primero implements Generador {
+
+	@Override
+	public String obtenerNumeroLibre(SortedSet<String> lineas) {
+		String linea = lineas.first();
+		lineas.remove(linea);
+		return linea;
+	}
+
+}
+```
+- Random
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+import java.util.ArrayList;
+import java.util.SortedSet;
+
+public class Random implements Generador {
+
+	@Override
+	public String obtenerNumeroLibre(SortedSet<String> lineas) {
+		String linea = new ArrayList<String>(lineas).get(new java.util.Random().nextInt(lineas.size()));
+		lineas.remove(linea);
+		return linea;
+	}
+// Por alguna razón no me dejaba usar el Random de java en la sección de imports.
+}
+```
+
+Una vez implementadas todas las **Concrete Strategy** procedemos a cambiar el código de la clase ```GestorNumerosDisponibles```
+
+- Se cambia ```private String tipoGenerador = "ultimo";``` a ```private Generador tipoGenerador;```
+- El setter se cambia
+```java
+	public void cambiarTipoGenerador(String valor) {
+		this.tipoGenerador = valor;
+	}
+// Nuevo setter
+	public void cambiarTipoGenerador(Generador generador) {
+		this.tipoGenerador = generador;
+	}
+```
+
+Por último la clase resultante queda tal que asi:
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+import java.util.TreeSet;
+import java.util.SortedSet;
+
+public class GestorNumerosDisponibles {
+	private SortedSet<String> lineas = new TreeSet<String>();
+	private Generador tipoGenerador;
+
+	public SortedSet<String> getLineas() {
+		return lineas;
+	}
+
+	public String obtenerNumeroLibre() {
+		return tipoGenerador.obtenerNumeroLibre(lineas);
+	}
+
+	public void cambiarTipoGenerador(Generador generador) {
+		this.tipoGenerador = generador;
+	}
+}
+```
+Borramos los imports que ya no forman parte de la lógica de la clase.
