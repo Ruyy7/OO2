@@ -169,10 +169,23 @@ public class PostApp{
 public class Post{
         private String texto;
         private LocalDateTime fecha;
+        private Usuario usuario;
 
-        public Post (String texto){
+        public Post (String texto, Usuario usuario){
                 this.texto = texto;
+                this.usuario = usuario;
                 this.fehca = LocalDateTime.now();
+        }
+
+        public Usuario getUsuario(){
+                return this.usuario;
+        }
+        public LocalDateTime getFecha(){
+                return this.fecha;
+        }
+
+        public boolean perteneceAotroUser (Usuario user){
+                return !this.usuario.equals(user);
         }
 }
 ```
