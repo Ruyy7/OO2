@@ -1,6 +1,7 @@
 # 2.4 Carrito de compras
 ![image](https://github.com/Ruyy7/OO2/assets/87097965/fb39112f-210a-4830-b5b5-c68220780f48)
 
+### Clase producto
 ```java
 public class Producto {
     private String nombre;
@@ -39,6 +40,7 @@ return this.items.stream().mapToDouble(item -> item.getProducto().getPrecio() * 
 
 (ii) Move method. Movemos la cuenta antes mencionada a la clase item carrito.
 
+### Clase producto
 ```java
 public class Producto {
     private String nombre;
