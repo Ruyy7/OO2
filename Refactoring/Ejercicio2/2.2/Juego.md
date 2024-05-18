@@ -1,4 +1,6 @@
 # 2.2 Juego
+
+### Clase juego
 ```java
 public class Juego {
 
@@ -8,7 +10,9 @@ public class Juego {
     public void decrementar(Jugador j) {
         j.puntuacion = j.puntuacion - 50;
     }
-
+```
+### Clase Jugador
+```java
 public class Jugador {
     public String nombre;
     public String apellido;
@@ -20,6 +24,7 @@ public class Jugador {
 
 (ii) Inserción de getters y setters y cambio de alcanze a privado.
 
+### Clase juego
 ```java
 public class Juego {
 
@@ -30,7 +35,9 @@ public class Juego {
         j.puntuacion = j.puntuacion - 50;
     }
 }
-
+```
+### Clase Jugador
+```java
 public class Jugador {
     private String nombre;
     private String apellido;
@@ -62,6 +69,7 @@ public class Jugador {
 
 (ii) Ninguno en particular, quitar el valor por defecto de puntuación.
 
+### Clase juego
 ```java
 public class Juego {
 
@@ -72,7 +80,9 @@ public class Juego {
         j.puntuacion = j.puntuacion - 50;
     }
 }
-
+```
+### Clase Jugador
+```java
 public class Jugador {
     private String nombre;
     private String apellido;
@@ -113,6 +123,7 @@ la puntuación del mismo ya que es la clase contenedora de los puntos.
 
 (ii) Move method, rename method.
 
+### Clase juego
 ```java
 public class Juego {
     public void incrementarPuntosJugador(Jugador j){
@@ -123,7 +134,9 @@ public class Juego {
         j.decrementarPuntos();
     }
 }
-
+```
+### Clase Jugador
+```java
 public class Jugador {
     private String nombre;
     private String apellido;
@@ -165,7 +178,7 @@ public class Jugador {
 ```
 No hace mucho sentido cambiar el nombre y el apeliido una vez creado, podríamos quitar los setters.
 
-
+### Clase juego
 ```java
 public class Juego {
     public void incrementarPuntosJugador(Jugador j){
@@ -176,7 +189,9 @@ public class Juego {
         j.decrementarPuntos();
     }
 }
-
+```
+### Clase Jugador
+```java
 public class Jugador {
     private String nombre;
     private String apellido;
