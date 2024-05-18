@@ -134,7 +134,7 @@ public class PostApp{
 public class PostApp{
         private List<Post> post;
         public List<Post> postExcluyendoUsuario(Usuario user) {
-                return this.post.stream().filter (post -> !post.getUsuario.(user)).collect(Collectors.toList());
+                return this.post.stream().filter (post -> !post.getUsuario().equals(user)).collect(Collectors.toList());
         }
    
         public List<Post> postOrdenadosPorFecha(List<Post> listaPost){
@@ -143,6 +143,36 @@ public class PostApp{
 
         public List<Post> ultimosNPost(List<Post> listaPost, int cantidad)  
             return listaPost.stream().limit(cantidad)collect(Collectors.toList());
+        }
+}
+```
+(i) Responsabilidad mal asignada. El post debe saber si el usuario es perteneciente del mismo o no, en vez de que la app pregunte por equals. Feature envy.
+
+(ii) Move method. Es el post quien sabra determinar si un usuario es perteneciente del mismo.
+
+```java
+public class PostApp{
+        private List<Post> post;
+        public List<Post> postExcluyendoUsuario(Usuario user) {
+                return this.post.stream().filter (post -> post.perteneceAotroUser.(user)).collect(Collectors.toList());
+        }
+   
+        public List<Post> postOrdenadosPorFecha(List<Post> listaPost){
+                return listaPost.stream().sorted((post1,post2) -> post2.getFecha().compareTo(post1.getFecha())).collect(Collectors.toList());
+        }
+
+        public List<Post> ultimosNPost(List<Post> listaPost, int cantidad)  
+            return listaPost.stream().limit(cantidad)collect(Collectors.toList());
+        }
+}
+
+public class Post{
+        private String texto;
+        private LocalDateTime fecha;
+
+        public Post (String texto){
+                this.texto = texto;
+                this.fehca = LocalDateTime.now();
         }
 }
 ```
