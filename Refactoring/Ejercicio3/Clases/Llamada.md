@@ -35,4 +35,61 @@ public class Llamada {
 
 (ii) La solución utilizada fue **"Replace Type Code with Subclasses"**.
 - Primero hay que identificar si una clase tiene un atributo que represente un tipo.
-- Segundo y último se realizan las subclases.
+- Segundo y último se realizan las subclases. En este caso existen dos tipos de llamadas: Nacionales e Internacionales. Como no existen llamadas que no tengan tipo, la clase Llamada pasa a ser abstracta.
+
+(iii)
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+public abstract class Llamada {
+	private String origen;
+	private String destino;
+	private int duracion;
+
+	public Llamada(String origen, String destino, int duracion) {
+		this.origen= origen;
+		this.destino= destino;
+		this.duracion = duracion;
+	}
+
+	public String getRemitente() {
+		return destino;
+	}
+
+	public int getDuracion() {
+		return this.duracion;
+	}
+
+	public String getOrigen() {
+		return origen;
+	}
+}
+```
+En consecuente vamos a tener las siguientes subclases de llamada.
+
+- Nacional
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+public class Nacional extends Llamada {
+
+	public Nacional(String origen, String destino, int duracion) {
+		super(origen, destino, duracion);
+	}
+
+}
+```
+
+- Internacional
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+public class Internacional extends Llamada {
+
+	public Internacional(String origen, String destino, int duracion) {
+		super(origen, destino, duracion);
+	}
+
+}
+```
+Luego de refactorizar el código de la empresa las clases adquieren nuevos comportamientos:
