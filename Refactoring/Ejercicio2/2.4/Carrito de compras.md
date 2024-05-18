@@ -24,7 +24,9 @@ public class ItemCarrito {
     }
 
 }
-
+```
+### Clase carrito
+```java
 public class Carrito {
     private List<ItemCarrito> items;
     
@@ -64,7 +66,9 @@ public class ItemCarrito {
     }
 
 }
-
+```
+### Clase carrito
+```java
 public class Carrito {
     private List<ItemCarrito> items;
     
