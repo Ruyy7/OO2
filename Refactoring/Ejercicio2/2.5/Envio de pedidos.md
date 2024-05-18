@@ -26,6 +26,7 @@ public class Cliente {
 
 (i) Feature envy en la clase cliente, es la dirección quien debe devolver el String formateado. Data Class, la dirección solo es una clase que almacena datos y sin un usuario esta no existiría. Inappropriate Intimacy ya que cliente utiliza todos los campos de dirección
 para resolver una tarea.
+
 (ii) Move field. Move method.
 
 ### Clase Supermercado
@@ -54,6 +55,7 @@ public class Cliente {
 ```
 
 (i) Campos públicos en la clase Cliente. Deben ser encapuslados.
+
 (ii) Encapsulate Field.
 
 ### Clase Supermercado
