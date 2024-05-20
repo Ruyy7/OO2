@@ -40,7 +40,7 @@ public class GestorNumerosDisponibles {
 }
 
 ```
-(i) Tenemos código de tipo ```private String tipoGenerador = "ultimo";``` el cual, según su estado, actua de una forma u otra.
+(i) Tenemos código de tipo ```private String tipoGenerador = "ultimo";``` el cual, según su valor, actua de una forma u otra.
 
 (ii) Replace Type Code with Strategy. En vez de preguntar por su tipo utilizando switch en este caso o ifs anidados, es mejor que ese comportamiento este contenido en un objeto estrategia (Concrete strategies).
 
