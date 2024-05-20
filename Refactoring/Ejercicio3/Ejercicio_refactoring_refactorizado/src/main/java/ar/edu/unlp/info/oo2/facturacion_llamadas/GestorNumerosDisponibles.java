@@ -12,7 +12,7 @@ public class GestorNumerosDisponibles {
 	}
 
 	public String obtenerNumeroLibre() {
-		return tipoGenerador.obtenerNumeroLibre(lineas);
+		return tipoGenerador.obtenerNumeroLibre(this.lineas);
 	}
 
 	public void cambiarTipoGenerador(Generador generador) {
