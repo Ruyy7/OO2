@@ -41,4 +41,7 @@ public abstract class Cliente {
 	public void setDNI(String dni) {
 		this.dni = dni;
 	}
+	public boolean esIgual (Cliente otroCliente) {
+        	return this.numeroTelefono.equals(otroCliente.getNumeroTelefono());
+   	}
 }
