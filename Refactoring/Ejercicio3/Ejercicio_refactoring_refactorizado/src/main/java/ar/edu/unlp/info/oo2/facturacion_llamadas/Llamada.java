@@ -24,8 +24,3 @@ public abstract class Llamada {
     public Cliente getOrigen() {
         return origen;
     }
-<<<<<<< HEAD
-} 
-=======
-} 
->>>>>>> 393a5041df2a9c2ffd4f9aa952b0d77d1235ecdf
