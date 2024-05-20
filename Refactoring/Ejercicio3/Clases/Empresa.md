@@ -164,3 +164,16 @@ public class PersonaJuridica extends Cliente {
 
 }
 ```
+Luego de aplicar los cambios en la clase llamada y cliente.
+(i) Reinventar la rueda, uso del for en vez de aprovechar el uso de stream. Esto permite dar mucha mayor legibilidad a la hora de leer el código.
+
+(ii) Utilizamos **Replace loop with pipeline**
+
+```java
+	public double calcularMontoTotalLlamadas(Cliente cliente) {
+		return this.llamadas.stream()
+	            .filter(llamada -> llamada.getOrigen().esIgual(cliente))
+	            .mapToDouble(llamada -> llamada.calcularMontoLlamada())
+	            .sum();
+	    }
+```
