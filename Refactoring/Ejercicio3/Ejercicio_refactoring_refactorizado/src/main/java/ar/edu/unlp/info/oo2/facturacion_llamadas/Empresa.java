@@ -55,7 +55,7 @@ public class Empresa {
 
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
 		return this.llamadas.stream()
-			.filter(llamada -> llamada.getCliente().esIgual(cliente))
+			.filter(llamada -> llamada.getOrigen().esIgual(cliente))
 			.mapToDouble(llamada -> llamada.calcularMontoLlamada())
 			.sum();
 			
