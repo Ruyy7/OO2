@@ -10,6 +10,12 @@ public abstract class Cliente {
 	private String numeroTelefono;
 	private String cuit;
 	private String dni;
+	
+	public abstract double aplicarDescuento();
+	
+	public boolean esIgual (Cliente otroCliente) {
+		return this.numeroTelefono.equals(otroCliente.getNumeroTelefono());
+	}
 
 	public String getTipo() {
 		return tipo;
