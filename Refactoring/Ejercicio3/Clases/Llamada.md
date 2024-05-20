@@ -92,4 +92,36 @@ public class Internacional extends Llamada {
 
 }
 ```
-Luego de refactorizar el código de la empresa las clases adquieren nuevos comportamientos:
+(i) Origen y destino representan un numero de un cliente, esto es conocido como un data value, es mejor que la clase que contiene el atributo sea el objeto que lo representa/contiene.
+
+(ii) Utilizamos **Replace data value with object**, actualizamos constructor y getters.
+
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+public abstract class Llamada {
+    private Cliente origen;
+    private Cliente destino;
+    private int duracion;
+
+    public Llamada(Cliente origen, Cliente destino, int duracion) {
+        this.origen= origen;
+        this.destino= destino;
+        this.duracion = duracion;
+    }
+
+    public abstract double calcularMontoLlamada();
+    
+    public Cliente getRemitente() {
+        return destino;
+    }
+
+    public int getDuracion() {
+        return this.duracion;
+    }
+
+    public Cliente getOrigen() {
+        return origen;
+    }
+} 
+```
