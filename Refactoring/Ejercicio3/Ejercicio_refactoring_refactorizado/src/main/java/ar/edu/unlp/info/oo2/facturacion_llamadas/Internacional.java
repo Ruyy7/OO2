@@ -10,8 +10,4 @@ public class Internacional extends Llamada {
         return this.getDuracion() * 150 + (this.getDuracion() * 150 * 0.21) + 50;
     }
 
-    public double calcularMontoLlamada() {
-        return this.getDuracion() * 150 + (this.getDuracion() * 150 * 0.21) + 50;
-    }
-
 }

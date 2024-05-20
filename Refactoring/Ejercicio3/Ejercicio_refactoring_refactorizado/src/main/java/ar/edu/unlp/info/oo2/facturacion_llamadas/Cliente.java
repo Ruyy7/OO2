@@ -13,7 +13,7 @@ public abstract class Cliente {
 	
 	public abstract double aplicarDescuento();
 	
-	public boolean esIgual (Cliente otroCliente) {
+	public boolean esIgual(Cliente otroCliente) {
 		return this.numeroTelefono.equals(otroCliente.getNumeroTelefono());
 	}
 
@@ -47,7 +47,4 @@ public abstract class Cliente {
 	public void setDNI(String dni) {
 		this.dni = dni;
 	}
-	public boolean esIgual (Cliente otroCliente) {
-        	return this.numeroTelefono.equals(otroCliente.getNumeroTelefono());
-   	}
 }
