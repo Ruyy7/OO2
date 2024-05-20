@@ -7,11 +7,7 @@ public class Empresa {
 	private List<Cliente> clientes = new ArrayList<Cliente>();
 	private List<Llamada> llamadas = new ArrayList<Llamada>();
 	private GestorNumerosDisponibles guia = new GestorNumerosDisponibles();
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 393a5041df2a9c2ffd4f9aa952b0d77d1235ecdf
+	
 	public boolean agregarNumeroTelefono(String str) {
 		boolean encontre = guia.getLineas().contains(str);
 		if (!encontre) {
@@ -58,19 +54,10 @@ public class Empresa {
 
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
 		return this.llamadas.stream()
-<<<<<<< HEAD
 	            .filter(llamada -> llamada.getOrigen().esIgual(cliente))
 	            .mapToDouble(llamada -> llamada.calcularMontoLlamada())
 	            .sum();
 	    }
-=======
-			.filter(llamada -> llamada.getOrigen().esIgual(cliente))
-			.mapToDouble(llamada -> llamada.calcularMontoLlamada())
-			.sum();
-			
-	}
-	
->>>>>>> 393a5041df2a9c2ffd4f9aa952b0d77d1235ecdf
 
 	public int cantidadDeUsuarios() {
 		return clientes.size();
