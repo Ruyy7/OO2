@@ -8,3 +8,4 @@
 - **Clase llamada**: Move method.
 - **Clase cliente**: Move method.
 - **Clase empresa**: Replace loop with piline.
+- **Clase empresa**: Remove middle man.
