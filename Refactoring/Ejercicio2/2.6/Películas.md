@@ -53,12 +53,16 @@ public class Pelicula {
 
 ```java
 public class Usuario {
-    Subscripcion tipoSubscripcion;
-    // ...
-
-    public void setTipoSubscripcion(Subscripcion unTipo) {
-   	 this.tipoSubscripcion = unTipo;
-    }
+	Subscripcion tipoSubscripcion;
+	// ...
+	
+	public void setTipoSubscripcion(Subscripcion unTipo) {
+		this.tipoSubscripcion = unTipo;
+	}
+	
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return this.tipoSubscripcion.calcularCostoPelicula();
+	}
 }
 ```
 
