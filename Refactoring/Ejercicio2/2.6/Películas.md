@@ -110,3 +110,5 @@ public class Premium implements Subscripcion{
 	}
 }
 ```
+
+La clase pelicula se mantiene igual.
