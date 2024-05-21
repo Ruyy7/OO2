@@ -47,21 +47,28 @@ public class Cliente {
 
 ```
 
-(i) Se utiliza un atributo tipo en lugar de crear subclases para cada uno de estos.
+(i) Se utiliza un atributo tipo en lugar de crear subclases para cada uno de estos. Ademas del uso de setters que viola el encapsulamiento del cliente.
 
 (ii) La solución utilizada fue **"Replace Type Code with Subclasses"**.
 - Primero hay que identificar si una clase tiene un atributo que represente un tipo.
 - Segundo se realizan las subclases. En este caso existen dos tipos de clientes: Persona fija y Persona jurídica. Como no existen clientes sin tipo que tengan comportamiento, la clase Cliente pasa a ser abstracta.
 - Movemos los atributos que le corresponden a la persona física y a la jurídica junto a los getters y setters.
 
+Ademas no cuentan con un constructor, se lo agregamos y eliminamos los setters.
+
 ***Aclaración***: El siguiente es código intermedio, recalco el hecho de leer el orden en que se fue refactorizando.
 
-- PersonaFisica
+- PersonaJuridica
 ```java
 package ar.edu.unlp.info.oo2.facturacion_llamadas;
 
-public class PersonaFisica extends Cliente {
+public class PersonaJuridica extends Cliente {
 	private String cuit;
+
+	public PersonaJuridica(String nombre, String numeroTelefono, String cuit) {
+		super(nombre, numeroTelefono);
+		this.cuit = cuit;
+	}
 
 	public String getCuit() {
 		return cuit;
@@ -72,12 +79,17 @@ public class PersonaFisica extends Cliente {
 	}
 }
 ```
-- PersonaJuridica
+- PersonaFisica
 ```java
 package ar.edu.unlp.info.oo2.facturacion_llamadas;
 
 public class PersonaFisica extends Cliente {
 	private String dni;
+
+	public PersonaFisica(String nombre, String numeroTelefono, String dni) {
+		super(nombre, numeroTelefono);
+		this.dni = dni;
+	}
 
 	public String getDNI() {
 		return dni;
@@ -91,6 +103,42 @@ public class PersonaFisica extends Cliente {
 
 }
 ```
+- Cliente
+```java
+package ar.edu.unlp.info.oo2.facturacion_llamadas;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Cliente {
+	public List<Llamada> llamadas = new ArrayList<Llamada>();
+	private String nombre;
+	
+	public Cliente(String nombre, String numeroTelefono) {
+		this.nombre = nombre;
+		this.numeroTelefono = numeroTelefono;
+	}
+
+	private String numeroTelefono;
+	
+	public abstract double aplicarDescuento();
+	
+	public boolean esIgual(Cliente otroCliente) {
+		return this.numeroTelefono.equals(otroCliente.getNumeroTelefono());
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public String getNumeroTelefono() {
+		return numeroTelefono;
+	}
+	
+}
+```
+
+-
 ## Post refeactorizar la clase empresa
 - Cliente
 ```java
@@ -103,6 +151,11 @@ public abstract class Cliente {
 	public List<Llamada> llamadas = new ArrayList<Llamada>();
 	private String nombre;
 	private String numeroTelefono;
+
+	public Cliente(String nombre, String numeroTelefono) {
+		this.nombre = nombre;
+		this.numeroTelefono = numeroTelefono;
+	}
 	
 	public abstract double aplicarDescuento();
 	
@@ -127,6 +180,11 @@ package ar.edu.unlp.info.oo2.facturacion_llamadas;
 
 public class PersonaFisica extends Cliente {
 	private String dni;
+
+	public PersonaFisica(String nombre, String numeroTelefono, String dni) {
+		super(nombre, numeroTelefono);
+		this.dni = dni;
+	}
 	
 	@Override
 	public double aplicarDescuento() {
@@ -146,6 +204,11 @@ package ar.edu.unlp.info.oo2.facturacion_llamadas;
 
 public class PersonaJuridica extends Cliente {
 	private String cuit;
+
+	public PersonaJuridica(String nombre, String numeroTelefono, String cuit) {
+		super(nombre, numeroTelefono);
+		this.cuit = cuit;
+	}
 	
 	@Override
 	public double aplicarDescuento() {
