@@ -92,7 +92,7 @@ public class Internacional extends Llamada {
 
 }
 ```
-(i) Origen y destino representan un numero de un cliente, esto es conocido como un data value, es mejor que la clase que contiene el atributo sea el objeto que lo representa/contiene.
+(i) Origen y destino representan un numero de un cliente, en el futuro podría llegar a registrarse el origen y el destino de una llamada por un DNI por mencionar un ejemplo, sería conveniente utilizar el objeto cliente.
 
 (ii) Utilizamos **Replace data value with object**, actualizamos constructor y getters.
 
