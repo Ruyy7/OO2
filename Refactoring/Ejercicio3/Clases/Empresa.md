@@ -211,3 +211,5 @@ Cambiamos la manera de obtener el número libre utilizando el atributo de guia. 
 		return var;
 	}
 ```
+
+(i) 
