@@ -7,5 +7,6 @@
 - **Clase GestorNumerosDisponibles**: Replace Type Code with Strategy -> Se crea la clase Generador con sus respectivas subclases.
 - **Clase llamada**: Move method.
 - **Clase cliente**: Move method.
+- **Clase cliente**: Push Down field.
 - **Clase empresa**: Replace loop with piline.
 - **Clase empresa**: Remove middle man.
