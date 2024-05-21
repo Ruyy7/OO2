@@ -178,3 +178,35 @@ Luego de aplicar los cambios en la clase llamada y cliente.
 	            .sum();
 	    }
 ```
+
+(i) Middle man. Se produce cuando una clase o un método ejecuta solo una acción o delega esa misma acción a otra clase.
+(ii) Utilizamos **Remove middle man**
+
+```java
+	public String obtenerNumeroLibre() {
+		return guia.obtenerNumeroLibre();
+	}
+// Este método se borra.
+```
+Cambiamos la manera de obtener el número libre utilizando el atributo de guia. (En los métodos donde fue utilizado). Solo se utilizó en el método siguiente:
+```java
+	public Cliente registrarUsuario(String data, String nombre, String tipo) {
+		Cliente var = new Cliente();
+		if (tipo.equals("fisica")) {
+			var.setNombre(nombre);
+			String tel = this.guia.obtenerNumeroLibre();
+			var.setTipo(tipo);
+			var.setNumeroTelefono(tel);
+			var.setDNI(data);
+		}
+		else if (tipo.equals("juridica")) {
+			String tel = this.guia.obtenerNumeroLibre();
+			var.setNombre(nombre);
+			var.setTipo(tipo);
+			var.setNumeroTelefono(tel);
+			var.setCuit(data);
+		}
+		clientes.add(var);
+		return var;
+	}
+```
