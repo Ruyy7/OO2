@@ -180,6 +180,7 @@ Luego de aplicar los cambios en la clase llamada y cliente.
 ```
 
 (i) Middle man. Se produce cuando una clase o un método ejecuta solo una acción o delega esa misma acción a otra clase.
+
 (ii) Utilizamos **Remove middle man**
 
 ```java
