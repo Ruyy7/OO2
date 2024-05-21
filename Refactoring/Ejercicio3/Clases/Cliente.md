@@ -52,7 +52,7 @@ public class Cliente {
 (ii) La solución utilizada fue **"Replace Type Code with Subclasses"**.
 - Primero hay que identificar si una clase tiene un atributo que represente un tipo.
 - Segundo se realizan las subclases. En este caso existen dos tipos de clientes: Persona fija y Persona jurídica. Como no existen clientes sin tipo que tengan comportamiento, la clase Cliente pasa a ser abstracta.
-- Movemos los atributos que le corresponden a la persona física y a la jurídica junto a los getters y setters.
+- Movemos los atributos que le corresponden a la persona física y a la jurídica junto a los getters. **Push down field**. 
 
 Ademas no cuentan con un constructor, se lo agregamos y eliminamos los setters.
 
