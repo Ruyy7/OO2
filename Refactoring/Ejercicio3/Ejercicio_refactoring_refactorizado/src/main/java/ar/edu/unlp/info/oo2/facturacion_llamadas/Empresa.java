@@ -7,51 +7,30 @@ public class Empresa {
 	private List<Cliente> clientes = new ArrayList<Cliente>();
 	private List<Llamada> llamadas = new ArrayList<Llamada>();
 	private GestorNumerosDisponibles guia = new GestorNumerosDisponibles();
+
+	public Cliente registrarCliente (CreadorCliente creadorCliente, String nombre, String numeroTelefono, String identificacion) {
+		if (this.guia.agregarNumeroTelefono(numeroTelefono)){
+			Cliente cliente = creadorCliente.crearCliente(nombre, numeroTelefono, identificacion);
+			this.clientes.add(cliente);
+		}
+		return null;
+	}
 	
-	public boolean agregarNumeroTelefono(String str) {
-		boolean encontre = guia.getLineas().contains(str);
-		if (!encontre) {
-			guia.getLineas().add(str);
-			encontre= true;
-			return encontre;
-		}
-		else {
-			encontre= false;
-			return encontre;
-		}
-	}
-
-	public String obtenerNumeroLibre() {
-		return guia.obtenerNumeroLibre();
-	}
-
-	public Cliente registrarUsuario(String data, String nombre, String tipo) {
-		Cliente var = new Cliente();
-		if (tipo.equals("fisica")) {
-			var.setNombre(nombre);
-			String tel = this.obtenerNumeroLibre();
-			var.setTipo(tipo);
-			var.setNumeroTelefono(tel);
-			var.setDNI(data);
-		}
-		else if (tipo.equals("juridica")) {
-			String tel = this.obtenerNumeroLibre();
-			var.setNombre(nombre);
-			var.setTipo(tipo);
-			var.setNumeroTelefono(tel);
-			var.setCuit(data);
-		}
-		clientes.add(var);
-		return var;
-	}
-
+    @Deprecated()
 	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
 		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
 		llamadas.add(llamada);
 		origen.llamadas.add(llamada);
 		return llamada;
 	}
-
+	
+	public Llamada registrarLlamada(CreadorLlamada creadorLlamada, Cliente origen, Cliente destino, int duracion) {
+		Llamada llamada = creadorLlamada.crearLlamada(origen,destino,duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+	
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
 		return this.llamadas.stream()
 	            .filter(llamada -> llamada.getOrigen().esIgual(cliente))
