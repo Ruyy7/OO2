@@ -5,46 +5,27 @@ import java.util.List;
 
 public abstract class Cliente {
 	public List<Llamada> llamadas = new ArrayList<Llamada>();
-	private String tipo;
 	private String nombre;
+	
+	public Cliente(String nombre, String numeroTelefono) {
+		this.nombre = nombre;
+		this.numeroTelefono = numeroTelefono;
+	}
+
 	private String numeroTelefono;
-	private String cuit;
-	private String dni;
 	
 	public abstract double aplicarDescuento();
 	
 	public boolean esIgual(Cliente otroCliente) {
 		return this.numeroTelefono.equals(otroCliente.getNumeroTelefono());
 	}
-
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+	
 	public String getNombre() {
 		return nombre;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+	
 	public String getNumeroTelefono() {
 		return numeroTelefono;
 	}
-	public void setNumeroTelefono(String numeroTelefono) {
-		this.numeroTelefono = numeroTelefono;
-	}
-	public String getCuit() {
-		return cuit;
-	}
-	public void setCuit(String cuit) {
-		this.cuit = cuit;
-	}
-	public String getDNI() {
-		return dni;
-	}
-	public void setDNI(String dni) {
-		this.dni = dni;
-	}
+	
 }
