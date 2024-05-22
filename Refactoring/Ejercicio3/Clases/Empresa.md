@@ -216,7 +216,7 @@ Cambiamos la manera de obtener el número libre utilizando el atributo de guia. 
 
 (ii) Aplicamos el refactoring **Replace Constructor With Factory Method** creando el factory method, remplazando todas las llamadas al contructor por llamadas a este y mejorando la legibilidad
 
-(iii) El respectivo código queda así:
+(iii) El respectivo código queda así, tenemos un solo método registrarCliente:
 
 ```java
 //Método en la clase Empresa
@@ -251,4 +251,46 @@ public class CreadorPersonaFisica extends CreadorCliente{
 	}
 
 }
+```
+
+(i) Lo mismo hacemos con la clase Llamada, ya que el método registrarLlamada que se creaba utilizando el atributo tipo, al refactorizar esto en subclases aumenta la complejidad del código.
+
+(ii) Aplicamos el refactoring **Replace Constructor With Factory Method** creando el factory method, remplazando todas las llamadas al contructor por llamadas a este y mejorando la legibilidad
+
+(iii) El respectivo código queda así, tenemos un solo método registrarLlamada:
+
+```java
+	//Método en la clase Empresa
+	public Llamada registrarLlamada(CreadorLlamada creadorLlamada, Cliente origen, Cliente destino, int duracion) {
+		Llamada llamada = creadorLlamada.crearLlamada(origen,destino,duracion);
+		origen.getLlamadas().add(llamada);
+		return llamada;
+	}
+
+ 	//Creator
+	public abstract class CreadorLlamada {
+		public abstract Llamada crearLlamada(Cliente origen, Cliente destino, int duracion);
+	}
+
+	//Concrete Creators
+	public class CreadorLlamadaInternacional extends CreadorLlamada {
+
+	@Override
+	public Llamada crearLlamada(Cliente origen, Cliente destino, int duracion) {
+		return new Internacional(origen,destino,duracion);
+		}
+
+	}
+
+	public class CreadorLlamandaNacional extends CreadorLlamada {
+
+	@Override
+	public Llamada crearLlamada(Cliente origen, Cliente destino, int duracion) {
+		return new Nacional(origen,destino,duracion);
+		}
+
+	}
+
+
+
 ```
