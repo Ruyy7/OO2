@@ -10,6 +10,10 @@ public class GestorNumerosDisponibles {
 	public SortedSet<String> getLineas() {
 		return lineas;
 	}
+	
+	public boolean agregarNumeroTelefono(String numero) {
+		return this.lineas.contains(numero)? this.lineas.add(numero):false;
+	}
 
 	public String obtenerNumeroLibre() {
 		return tipoGenerador.obtenerNumeroLibre(this.lineas);
@@ -19,3 +23,4 @@ public class GestorNumerosDisponibles {
 		this.tipoGenerador = generador;
 	}
 }
+
