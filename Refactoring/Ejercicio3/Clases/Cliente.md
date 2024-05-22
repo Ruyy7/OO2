@@ -221,3 +221,22 @@ public class PersonaJuridica extends Cliente {
 	
 }
 ```
+
+(i) En la clase Cliente además notamos que la lista de llamdas es pública, esto trae muchas complicaciones ya que viola el principio de encapsulamiento y se corren riesgos de cambios inesperados
+```java
+	public List<Llamada> llamadas = new ArrayList<Llamada>();
+```
+
+(ii) Aplicamos el refactoring **Encapsulate Collection** y ponemos la variable como privada, agregandole un respectivo getter para mejorar la seguridad al ser utilizada por otras clases.
+(iii) El código queda de la siguiente manera:
+
+```java
+
+  private List<Llamada> llamadas = new ArrayList<Llamada>();
+
+   public List<Llamada> getLlamadas(){
+		return this.llamadas;
+	}
+
+
+```
