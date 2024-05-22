@@ -212,4 +212,43 @@ Cambiamos la manera de obtener el número libre utilizando el atributo de guia. 
 	}
 ```
 
-(i) 
+(i) Después de aplicar el refactoring anterior observamos que en el método registrarUsuario la creación de instancias es larga, compleja y duplica la lógica, por lo que decidimos simplificar el código y facilitar la posible extensión de clases
+
+(ii) Aplicamos el refactoring **Replace Constructor With Factory Method** creando el factory method, remplazando todas las llamadas al contructor por llamadas a este y mejorando la legibilidad
+
+(iii) El respectivo código queda así:
+
+```java
+//Método en la clase Empresa
+public Cliente registrarCliente (CreadorCliente creadorCliente, String nombre, String numeroTelefono, String identificacion) {
+	if (this.guia.agregarNumeroTelefono(numeroTelefono)){
+		Cliente cliente = creadorCliente.crearCliente(nombre, numeroTelefono, identificacion);
+  		this.clientes.add(cliente);
+	}
+	return null;
+}
+
+
+//Creator
+public abstract class CreadorCliente {
+	public abstract Cliente crearCliente(String nombre, String numeroTelefono, String identificacion);
+}
+
+//Concrete Creators
+public class CreadorPersonaJuridica extends CreadorCliente {
+
+	@Override
+	public Cliente crearCliente(String nombre, String numeroTelefono, String identificacion) {
+		return new PersonaJuridica(nombre,numeroTelefono,identificacion);
+	}
+}
+
+public class CreadorPersonaFisica extends CreadorCliente{
+
+	@Override
+	public Cliente crearCliente(String nombre, String numeroTelefono, String identificacion) {
+		return new PersonaFisica(nombre,numeroTelefono,identificacion);
+	}
+
+}
+```
