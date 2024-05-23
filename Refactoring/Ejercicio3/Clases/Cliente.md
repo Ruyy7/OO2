@@ -239,3 +239,44 @@ public class PersonaJuridica extends Cliente {
 
 
 ```
+
+Luego de aplicar el move method de empresa para el registro de llamadas la clase cliente quedaría tal que así.
+
+## Cliente
+```java
+    	@Deprecated()
+	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
+		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+	
+	public Llamada registrarLlamada(CreadorLlamada creadorLlamada, Cliente origen, Cliente destino, int duracion) {
+		Llamada llamada = creadorLlamada.crearLlamada(origen,destino,duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+	
+```
+(i) El parametro "Cliente origen" ya no es necesario, aplicaremos el refactoring solo al método que no está deprecado ya que en el caso hipotetico de que algún desarrollador sigue haciendo uso del método deprecado, este se verá afectado por los cambios que le hagamos al mismo pudiendo llegar a romper su sistema.
+
+(ii) Aplicamos **Remove parameter** que consiste simplemente en remover los atributos que no son utilizados por el método.
+
+```java
+	// Este método esta deprecado, se debería quitar el parametro Cliente origen.
+    	@Deprecated()
+	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
+		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+	
+	public Llamada registrarLlamada(CreadorLlamada creadorLlamada,Cliente destino, int duracion) {
+		Llamada llamada = creadorLlamada.crearLlamada(origen,destino,duracion);
+		this.llamadas.add(llamada);
+		return llamada;
+	}
+```
