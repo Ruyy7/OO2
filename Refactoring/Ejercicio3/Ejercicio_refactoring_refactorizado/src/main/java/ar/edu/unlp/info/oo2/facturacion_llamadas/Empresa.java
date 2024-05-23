@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Empresa {
 	private List<Cliente> clientes = new ArrayList<Cliente>();
-	private List<Llamada> llamadas = new ArrayList<Llamada>();
 	private GestorNumerosDisponibles guia = new GestorNumerosDisponibles();
 
 	public Cliente registrarCliente (CreadorCliente creadorCliente, String nombre, String numeroTelefono, String identificacion) {
