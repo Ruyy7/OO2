@@ -1,4 +1,60 @@
 ```java
+	public boolean agregarNumeroTelefono(String str) {
+		boolean encontre = guia.getLineas().contains(str);
+		if (!encontre) {
+			guia.getLineas().add(str);
+			encontre= true;
+			return encontre;
+		}
+		else {
+			encontre= false;
+			return encontre;
+		}
+	}
+
+	public String obtenerNumeroLibre() {
+		return guia.obtenerNumeroLibre();
+	}
+
+	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
+		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+```
+(i) Nombres de parametros pocos descriptivos (str y t). Esto puede llegar a dificultar la lectura y el entendimiento del código en el caso que lo lea otra persona u nosotros mismos luego de un tiempo.
+
+(ii) Aplicamos **Rename parameter**, quedaría tal que así:
+
+```java
+	public boolean agregarNumeroTelefono(String nummeroTelefono) {
+		boolean encontre = guia.getLineas().contains(nummeroTelefono);
+		if (!encontre) {
+			guia.getLineas().add(nummeroTelefono);
+			encontre= true;
+			return encontre;
+		}
+		else {
+			encontre= false;
+			return encontre;
+		}
+	}
+
+	public String obtenerNumeroLibre() {
+		return guia.obtenerNumeroLibre();
+	}
+
+	public Llamada registrarLlamada(Cliente origen, Cliente destino, String tipoLlamada, int duracion) {
+		Llamada llamada = new Llamada(tipoLlamada, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+```
+
+
+```java
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
 		double c = 0;
 		for (Llamada l : cliente.llamadas) {
