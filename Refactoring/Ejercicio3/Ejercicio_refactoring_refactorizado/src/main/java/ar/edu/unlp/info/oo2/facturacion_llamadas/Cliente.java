@@ -32,7 +32,7 @@ public abstract class Cliente {
 
 	public double calcularMontoTotalLlamadas() {
 		return this.llamadas.stream()
-		    .filter(llamada -> llamadas.esIgual(this))
+		    .filter(llamada -> llamadas.getOrigen().esIgual(this))
 		    .mapToDouble(llamada -> llamada.calcularMontoLlamada())
 		    .sum();
    	}
