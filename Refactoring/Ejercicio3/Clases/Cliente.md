@@ -138,7 +138,6 @@ public abstract class Cliente {
 }
 ```
 
--
 ## Post refeactorizar la clase empresa
 - Cliente
 ```java
