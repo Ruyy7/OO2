@@ -220,6 +220,13 @@ public class PersonaJuridica extends Cliente {
 
 }
 ```
+Cuando aplicamos estos cambios las variables
+```java
+static double descuentoJur = 0.15;
+static double descuentoFis = 0;
+```
+Ya no son utilizadas en la clase empresa por ende las borramos, a esto se le llama **Remove dead code** quedando así el código un poco mas compacto y cohesivo ya que serán atributos que le corresponden a la clase cliente. Para que la clase PersonaFisica y PersonaJuridica no se conviertan en data classes lo que hacemos es crear un método para aplicar descuento y que retorne los valores correspondientes a cada uno.
+
 ##
 Luego de aplicar los cambios en la clase llamada y cliente.
 
