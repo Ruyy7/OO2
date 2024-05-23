@@ -15,6 +15,7 @@ public abstract class Cliente {
 
 	public abstract double aplicarDescuento();
 
+	// Este método esta deprecado, se debería quitar el parametro Cliente origen.
     	@Deprecated()
 	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
 		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
@@ -23,12 +24,18 @@ public abstract class Cliente {
 		return llamada;
 	}
 	
-	public Llamada registrarLlamada(CreadorLlamada creadorLlamada, Cliente origen, Cliente destino, int duracion) {
+	public Llamada registrarLlamada(CreadorLlamada creadorLlamada,Cliente destino, int duracion) {
 		Llamada llamada = creadorLlamada.crearLlamada(origen,destino,duracion);
-		llamadas.add(llamada);
-		origen.llamadas.add(llamada);
+		this.llamadas.add(llamada);
 		return llamada;
 	}
+
+	public double calcularMontoTotalLlamadas() {
+	return this.llamadas.stream()
+	    .filter(llamada -> llamadas.esIgual(this))
+	    .mapToDouble(llamada -> llamada.calcularMontoLlamada())
+	    .sum();
+    }
 	
 	public boolean esIgual(Cliente otroCliente) {
 		return this.numeroTelefono.equals(otroCliente.getNumeroTelefono());
