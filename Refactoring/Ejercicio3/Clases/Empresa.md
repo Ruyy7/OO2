@@ -52,7 +52,7 @@
 		return llamada;
 	}
 ```
-
+##
 
 ```java
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
@@ -220,6 +220,7 @@ public class PersonaJuridica extends Cliente {
 
 }
 ```
+##
 Luego de aplicar los cambios en la clase llamada y cliente.
 
 (i) Reinventar la rueda, uso del for en vez de aprovechar el uso de stream. Esto permite dar mucha mayor legibilidad a la hora de leer el código.
@@ -234,7 +235,7 @@ Luego de aplicar los cambios en la clase llamada y cliente.
 	            .sum();
 	    }
 ```
-
+##
 (i) Middle man. Se produce cuando una clase o un método ejecuta solo una acción o delega esa misma acción a otra clase.
 
 (ii) Utilizamos **Remove middle man**, en consecuencia tendremos menos código extra innecesario.
@@ -267,7 +268,7 @@ Cambiamos la manera de obtener el número libre utilizando el atributo de guia. 
 		return var;
 	}
 ```
-
+##
 (i) Después de aplicar el refactoring anterior observamos que en el método registrarUsuario la creación de instancias es larga, compleja y duplica la lógica, por lo que decidimos simplificar el código y facilitar la posible extensión de clases.
 
 (ii) Aplicamos el refactoring **Replace Constructor With Factory Method** creando el factory method, remplazando todas las llamadas al contructor por llamadas a este y mejorando la legibilidad.
@@ -347,7 +348,7 @@ public class CreadorPersonaFisica extends CreadorCliente{
 
 	}
 ```
-
+##
 ```java
     	@Deprecated()
 	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
