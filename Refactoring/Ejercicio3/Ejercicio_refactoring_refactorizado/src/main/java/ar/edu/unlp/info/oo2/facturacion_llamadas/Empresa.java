@@ -14,13 +14,6 @@ public class Empresa {
 		}
 		return null;
 	}
-	
-	public double calcularMontoTotalLlamadas(Cliente cliente) {
-		return this.llamadas.stream()
-	            .filter(llamada -> llamada.getOrigen().esIgual(cliente))
-	            .mapToDouble(llamada -> llamada.calcularMontoLlamada())
-	            .sum();
-	    }
 
 	public int cantidadDeUsuarios() {
 		return clientes.size();
