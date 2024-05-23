@@ -20,7 +20,7 @@
 		}
 		return c;
 ```
-(i) Feature envy. La clase empresa quiere realizar un calculo que le corresponde calcular a la clase llamada y a la clase respectivamente. Una llamada debe saber calcular su costo en base a su tipo, lo mismo con el descuento para el cliente.
+(i) **Feature envy**. La clase empresa quiere realizar un calculo que le corresponde calcular a la clase llamada y a la clase cliente respectivamente. Una llamada debe saber calcular su costo en base a su tipo, lo mismo con el descuento para el cliente. Esto hace mas cohesivo el código y permite (en este ejercicio) que las clases llamada y cliente no sean Data Classes.
 
 (ii) Aplicamos move method, el calculo de una llamada según su tipo será responsabilidad de cada subclase de llamada y para el cliente lo mismo pero para aplicar desucento.
 
@@ -181,7 +181,7 @@ Luego de aplicar los cambios en la clase llamada y cliente.
 
 (i) Middle man. Se produce cuando una clase o un método ejecuta solo una acción o delega esa misma acción a otra clase.
 
-(ii) Utilizamos **Remove middle man**
+(ii) Utilizamos **Remove middle man**, en consecuencia tendremos menos código extra innecesario.
 
 ```java
 	public String obtenerNumeroLibre() {
@@ -212,9 +212,9 @@ Cambiamos la manera de obtener el número libre utilizando el atributo de guia. 
 	}
 ```
 
-(i) Después de aplicar el refactoring anterior observamos que en el método registrarUsuario la creación de instancias es larga, compleja y duplica la lógica, por lo que decidimos simplificar el código y facilitar la posible extensión de clases
+(i) Después de aplicar el refactoring anterior observamos que en el método registrarUsuario la creación de instancias es larga, compleja y duplica la lógica, por lo que decidimos simplificar el código y facilitar la posible extensión de clases.
 
-(ii) Aplicamos el refactoring **Replace Constructor With Factory Method** creando el factory method, remplazando todas las llamadas al contructor por llamadas a este y mejorando la legibilidad
+(ii) Aplicamos el refactoring **Replace Constructor With Factory Method** creando el factory method, remplazando todas las llamadas al contructor por llamadas a este y mejorando la legibilidad.
 
 (iii) El respectivo código queda así, tenemos un solo método registrarCliente:
 
@@ -290,7 +290,4 @@ public class CreadorPersonaFisica extends CreadorCliente{
 		}
 
 	}
-
-
-
 ```
