@@ -240,7 +240,7 @@ public class PersonaJuridica extends Cliente {
 
 ```
 
-Luego de aplicar el move method de empresa para el registro de llamadas la clase cliente quedaría tal que así.
+Luego de aplicar el move method de empresa para el registro de llamadas y el calculo total de llamadas para un cliente la clase cliente quedaría tal que así.
 
 ## Cliente
 ```java
@@ -258,9 +258,16 @@ Luego de aplicar el move method de empresa para el registro de llamadas la clase
 		origen.llamadas.add(llamada);
 		return llamada;
 	}
+
+	public double calcularMontoTotalLlamadas(Cliente cliente) {
+		return this.llamadas.stream()
+	            .filter(llamada -> llamada.getOrigen().esIgual(cliente))
+	            .mapToDouble(llamada -> llamada.calcularMontoLlamada())
+	            .sum();
+	    }
 	
 ```
-(i) El parametro "Cliente origen" ya no es necesario, aplicaremos el refactoring solo al método que no está deprecado ya que en el caso hipotetico de que algún desarrollador sigue haciendo uso del método deprecado, este se verá afectado por los cambios que le hagamos al mismo pudiendo llegar a romper su sistema.
+(i) El parametro "Cliente origen" en registrarLlamada y calcularMontoTotalLlamadas ya no es necesario, aplicaremos el refactoring solo al método que no está deprecado ya que en el caso hipotetico de que algún desarrollador sigue haciendo uso del método deprecado, este se verá afectado por los cambios que le hagamos al mismo pudiendo llegar a romper su sistema.
 
 (ii) Aplicamos **Remove parameter** que consiste simplemente en remover los atributos que no son utilizados por el método.
 
@@ -279,4 +286,11 @@ Luego de aplicar el move method de empresa para el registro de llamadas la clase
 		this.llamadas.add(llamada);
 		return llamada;
 	}
+
+	public double calcularMontoTotalLlamadas() {
+		return this.llamadas.stream()
+		    .filter(llamada -> llamadas.getOrigen().esIgual(this))
+		    .mapToDouble(llamada -> llamada.calcularMontoLlamada())
+		    .sum();
+   	}
 ```
