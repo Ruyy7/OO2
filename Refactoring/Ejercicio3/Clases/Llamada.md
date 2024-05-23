@@ -31,9 +31,9 @@ public class Llamada {
 	}
 }
 ```
-(i) Lo primero que identificamos en esta clase es que se utiliza un atributo tipo en lugar de crear subclases para cada uno de estos.
+(i) Lo primero que identificamos en esta clase es que se utiliza un atributo tipo en lugar de crear subclases para cada uno de estos. Esto si lo pensamos a gran escala es un problema ya que derivaría, como se muestra en la clase empresa, que dependiendo el valor que tenga el tipo de Llamada o como también sucede en la clase cliente y generadorDeNumeros si tenemos varios tipos de una clase podría formarse un switch o una cadena de ifs anidados muy engorrosa.
 
-(ii) La solución utilizada fue **"Replace Type Code with Subclasses"**.
+(ii) La solución utilizada fue **"Replace Type Code with Subclasses"**. Los que nos permite es mantener varios tipos de una clase sin modificar el código de la misma. El paso a paso es el siguiente:
 - Primero hay que identificar si una clase tiene un atributo que represente un tipo.
 - Segundo y último se realizan las subclases. En este caso existen dos tipos de llamadas: Nacionales e Internacionales. Como no existen llamadas que no tengan tipo, la clase Llamada pasa a ser abstracta.
 
