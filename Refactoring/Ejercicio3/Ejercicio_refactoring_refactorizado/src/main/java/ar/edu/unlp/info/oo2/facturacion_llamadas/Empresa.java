@@ -15,21 +15,6 @@ public class Empresa {
 		return null;
 	}
 	
-    @Deprecated()
-	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
-		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
-		llamadas.add(llamada);
-		origen.llamadas.add(llamada);
-		return llamada;
-	}
-	
-	public Llamada registrarLlamada(CreadorLlamada creadorLlamada, Cliente origen, Cliente destino, int duracion) {
-		Llamada llamada = creadorLlamada.crearLlamada(origen,destino,duracion);
-		llamadas.add(llamada);
-		origen.llamadas.add(llamada);
-		return llamada;
-	}
-	
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
 		return this.llamadas.stream()
 	            .filter(llamada -> llamada.getOrigen().esIgual(cliente))
