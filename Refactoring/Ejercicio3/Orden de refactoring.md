@@ -10,3 +10,6 @@
 - **Clase cliente**: Push Down field.
 - **Clase empresa**: Replace loop with piline.
 - **Clase empresa**: Remove middle man.
+- **Clase empresa**: Move field.
+- **Clase empresa**: Move method.
+- **Clase cliente**: Remove parameters.
