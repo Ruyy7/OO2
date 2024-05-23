@@ -309,7 +309,7 @@ public class CreadorPersonaFisica extends CreadorCliente{
 	}
 ```
 
-(i) **Feature envy**. El registro de una llamada debería ser responsabilidad de un cliente, ya que el cliente es que contiene la colección de llamadas en su clase.
+(i) **Feature envy**. El registro de una llamada y el calculo total de las llamadas de UN SOLO cliente debería ser responsabilidad de un cliente, ya que el cliente es que contiene la colección de llamadas en su clase.
 
 (ii) Aplicamos move method hacía la clase cliente.
 
@@ -328,6 +328,13 @@ public class CreadorPersonaFisica extends CreadorCliente{
 		llamadas.add(llamada);
 		origen.llamadas.add(llamada);
 		return llamada;
+	}
+
+	public double calcularMontoTotalLlamadas(Cliente cliente) {
+		return this.llamadas.stream()
+		    .filter(llamada -> llamada.getOrigen().esIgual(cliente))
+		    .mapToDouble(llamada -> llamada.calcularMontoLlamada())
+		    .sum();
 	}
 	
 ```
