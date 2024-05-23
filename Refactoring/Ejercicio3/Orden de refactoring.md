@@ -8,6 +8,7 @@
 - **Clase llamada**: Move method.
 - **Clase cliente**: Move method.
 - **Clase cliente**: Push Down field.
+- **Clase empresa**: Remove fields.
 - **Clase empresa**: Replace loop with piline.
 - **Clase empresa**: Remove middle man.
 - **Clase empresa**: Move field.
