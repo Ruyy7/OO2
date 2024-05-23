@@ -291,3 +291,43 @@ public class CreadorPersonaFisica extends CreadorCliente{
 
 	}
 ```
+
+```java
+    	@Deprecated()
+	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
+		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+	
+	public Llamada registrarLlamada(CreadorLlamada creadorLlamada, Cliente origen, Cliente destino, int duracion) {
+		Llamada llamada = creadorLlamada.crearLlamada(origen,destino,duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+```
+
+(i) **Feature envy**. El registro de una llamada debería ser responsabilidad de un cliente, ya que el cliente es que contiene la colección de llamadas en su clase.
+
+(ii) Aplicamos move method hacía la clase cliente.
+
+## Clase cliente
+```java
+    	@Deprecated()
+	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
+		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+	
+	public Llamada registrarLlamada(CreadorLlamada creadorLlamada, Cliente origen, Cliente destino, int duracion) {
+		Llamada llamada = creadorLlamada.crearLlamada(origen,destino,duracion);
+		llamadas.add(llamada);
+		origen.llamadas.add(llamada);
+		return llamada;
+	}
+	
+```
