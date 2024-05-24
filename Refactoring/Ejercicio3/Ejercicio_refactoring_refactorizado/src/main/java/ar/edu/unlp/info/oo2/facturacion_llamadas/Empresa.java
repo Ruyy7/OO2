@@ -5,7 +5,11 @@ import java.util.List;
 
 public class Empresa {
 	private List<Cliente> clientes = new ArrayList<Cliente>();
-	private GestorNumerosDisponibles guia = new GestorNumerosDisponibles();
+	private GestorNumerosDisponibles guia;
+	
+	public Empresa(GestorNumerosDisponibles guia) {
+		this.guia = guia;
+	}
 
 	public Cliente registrarCliente (CreadorCliente creadorCliente, String nombre, String identificacion) {
 		String numeroTelefono = this.guia.obtenerNumeroLibre();

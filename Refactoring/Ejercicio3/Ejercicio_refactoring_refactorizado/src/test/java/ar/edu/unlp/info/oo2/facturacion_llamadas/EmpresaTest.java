@@ -15,8 +15,8 @@ class EmpresaTest {
 
 	@BeforeEach
 	public void setUp() {
-		this.sistema = new Empresa();
 		this.guia = new GestorNumerosDisponibles();
+		this.sistema = new Empresa(guia);
 		this.creadorPersonaFisica = new CreadorPersonaFisica();
 		this.creadorPersonaJuridica = new CreadorPersonaJuridica();
 		this.creadorLlamadaNacional = new CreadorLlamadaNacional();
