@@ -401,3 +401,10 @@ public class CreadorPersonaFisica extends CreadorCliente{
 	}
 	
 ```
+##
+Por último incluyo constructor en la clase empresa que reciba un gestor de números disponibles ya que quien manipula ahora los números de la empresa es la clase "GestorNumerosDisponibles", por ende, los números se agregan en esa clase y la empresa consulta por los números mediante el gestor que recibe.
+```java
+	public Empresa(GestorNumerosDisponibles guia) {
+		this.guia = guia;
+	}
+```
