@@ -5,14 +5,17 @@ import java.util.SortedSet;
 
 public class GestorNumerosDisponibles {
 	private SortedSet<String> lineas = new TreeSet<String>();
-	private Generador tipoGenerador;
+	private Generador tipoGenerador = new Ultimo();
 
 	public SortedSet<String> getLineas() {
 		return lineas;
 	}
 	
 	public boolean agregarNumeroTelefono(String numero) {
-		return this.lineas.contains(numero)? this.lineas.add(numero):false;
+		if (!this.lineas.contains(numero)) {
+			return this.lineas.add(numero);
+		}
+		return false;
 	}
 
 	public String obtenerNumeroLibre() {

@@ -7,12 +7,11 @@ public class Empresa {
 	private List<Cliente> clientes = new ArrayList<Cliente>();
 	private GestorNumerosDisponibles guia = new GestorNumerosDisponibles();
 
-	public Cliente registrarCliente (CreadorCliente creadorCliente, String nombre, String numeroTelefono, String identificacion) {
-		if (this.guia.agregarNumeroTelefono(numeroTelefono)){
-			Cliente cliente = creadorCliente.crearCliente(nombre, numeroTelefono, identificacion);
-			this.clientes.add(cliente);
-		}
-		return null;
+	public Cliente registrarCliente (CreadorCliente creadorCliente, String nombre, String identificacion) {
+		String numeroTelefono = this.guia.obtenerNumeroLibre();
+		Cliente cliente = creadorCliente.crearCliente(nombre, numeroTelefono, identificacion);
+		this.clientes.add(cliente);
+		return cliente;
 	}
 
 	public int cantidadDeUsuarios() {
