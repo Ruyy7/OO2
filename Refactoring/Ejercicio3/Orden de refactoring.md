@@ -14,3 +14,4 @@
 - **Clase empresa**: Move field.
 - **Clase empresa**: Move method.
 - **Clase cliente**: Remove parameters.
+- **Clase llamada**: Rename method.
