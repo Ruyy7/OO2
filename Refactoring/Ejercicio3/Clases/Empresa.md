@@ -284,12 +284,11 @@ Cambiamos la manera de obtener el número libre utilizando el atributo de guia. 
 
 ```java
 //Método en la clase Empresa
-public Cliente registrarCliente (CreadorCliente creadorCliente, String nombre, String numeroTelefono, String identificacion) {
-	if (this.guia.agregarNumeroTelefono(numeroTelefono)){
-		Cliente cliente = creadorCliente.crearCliente(nombre, numeroTelefono, identificacion);
-  		this.clientes.add(cliente);
-	}
-	return null;
+public Cliente registrarCliente (CreadorCliente creadorCliente, String nombre, String identificacion) {
+	String numeroTelefono = this.guia.obtenerNumeroLibre();
+	Cliente cliente = creadorCliente.crearCliente(nombre, numeroTelefono, identificacion);
+	this.clientes.add(cliente);
+	return cliente;
 }
 
 
