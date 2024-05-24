@@ -31,10 +31,12 @@ public abstract class Cliente {
 	}
 
 	public double calcularMontoTotalLlamadas() {
-		return this.llamadas.stream()
-		    .filter(llamada -> llamada.getOrigen().esIgual(this))
-		    .mapToDouble(llamada -> llamada.calcularMontoLlamada())
-		    .sum();
+		double montoTotal = this.llamadas.stream()
+			    .filter(llamada -> llamada.getOrigen().esIgual(this))
+			    .mapToDouble(llamada -> llamada.calcularMontoLlamada())
+			    .sum();
+		montoTotal -= montoTotal * this.aplicarDescuento();
+		return montoTotal;
    	}
 	
 	public boolean esIgual(Cliente otroCliente) {
