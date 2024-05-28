@@ -27,5 +27,9 @@ public class Robot
         armsSystem.fireArms(this);
         collector.collectArtifacts(this);
     }
+
+	public EnergySource getEnergySource() {
+		return energySource;
+	}
     
 }
