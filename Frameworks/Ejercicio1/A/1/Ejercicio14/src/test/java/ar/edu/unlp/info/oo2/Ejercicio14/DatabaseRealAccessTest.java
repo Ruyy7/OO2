@@ -5,11 +5,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Logger;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DatabaseRealAccessTest {
     private DatabaseAccess database;
+
 
     @BeforeEach
     void setUp() throws Exception {

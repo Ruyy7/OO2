@@ -1,24 +1,50 @@
 package ar.edu.unlp.info.oo2.Ejercicio14;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.LogRecord;
-import java.util.logging.StreamHandler;
-public class FilterHandler extends StreamHandler{
-	
-	List<String> filtros;
-	
-	public FilterHandler() {
-		this.filtros = new ArrayList<>();
-		this.filtros.add("Access");
+
+public class FilterHandler extends Handler{
+	private Handler handler;
+	private List<String> blackListOfWords;
+
+	public FilterHandler(Handler handler) {
+		this.handler = handler;
+		this.blackListOfWords = new ArrayList<>();
 	}
 	
-	@Override
-	public void publish(LogRecord record) {
-		String[] texto = record.getMessage().split(" ");
-		for (String t : texto) {
-			if (this.filtros.contains(t)) {
-				t = "***";
+	private String censoredRecord(String message) {
+		for (String word:blackListOfWords) {
+			if (message.contains(word)) {
+				message = message.replaceAll(word, "***");
 			}
 		}
+		return message;
 	}
+	
+	public void addBannedWord(String word) {
+		this.blackListOfWords.add(word);
+	}
+
+	@Override
+	public void publish(LogRecord record) {
+		record.setMessage(this.censoredRecord(record.getMessage()));
+		this.handler.publish(record);
+	}
+
+	@Override
+	public void flush() {
+		this.handler.flush();
+	}
+
+	@Override
+	public void close() throws SecurityException {
+		this.handler.close();
+	}
+
+	public Handler getHandler() {
+		return handler;
+	}
+
 }

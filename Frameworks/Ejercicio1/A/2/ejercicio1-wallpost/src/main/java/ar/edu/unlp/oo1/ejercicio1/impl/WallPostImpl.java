@@ -24,7 +24,6 @@ public class WallPostImpl implements WallPost {
 		this.text = text;
 		this.likes = likes;
 		this.isFeatured = isFeaured;
-		Logger.getLogger("WallPostLogger").addHandler(new FileHandler("logs.txt"));
 	}
 
 	@Override

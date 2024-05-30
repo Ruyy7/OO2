@@ -3,14 +3,30 @@ package ar.edu.unlp.info.oo2.Ejercicio14;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DatabaseProtectedAccessTest {
 	DatabaseProtectedAccess proxy;
 	DatabaseAccess database;
+    private static Logger logger = Logger.getLogger("DataBaseLogger");
 	
+    @BeforeAll
+    static void setUpLogger() {
+    	FilterHandler  fh = new FilterHandler(new ConsoleHandler());
+    	fh.getHandler().setFormatter(new JSONFormatter());
+	    fh.addBannedWord("not");
+	    logger.addHandler(fh);
+	    
+//	    MailHandler mh = new MailHandler();
+//	    logger.addHandler(mh);
+    }
+    
 	@BeforeEach
 	void setUp() {
 		proxy = new DatabaseProtectedAccess(new DatabaseRealAccess());

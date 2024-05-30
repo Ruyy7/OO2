@@ -14,10 +14,6 @@ public class DatabaseProtectedAccess implements DatabaseAccess {
 	public DatabaseProtectedAccess(DatabaseAccess protectionProxy) {
 		this.access = false;
 		this.protectionProxy = protectionProxy;
-		Logger dblogger = Logger.getLogger("DataBaseLogger");
-		FilterHandler dbloggerfilterhandler = new FilterHandler();
-		dbloggerfilterhandler.setFormatter(new JSONFormatter());
-		dblogger.addHandler(dbloggerfilterhandler);
 	}
 	
 	public void authenticate() {
