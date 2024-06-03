@@ -1,0 +1,78 @@
+@startuml UML
+Tarea <|-- TareaSimple
+Tarea <|--* "1..*" TareaCompleja: tareas
+
+together{
+    class TareaSimple
+    class TareaCompleja
+}
+
+abstract class Tarea {
+    -nombre:String
+    -descripcion:String
+    + <<create>> Tarea (nombre:String, descripcion:String)
+    +{abstract} estimacionTotalTarea():Integer
+    +{abstract} tiempoUtilizado():Long
+    +{abstract} avanceTarea():Long
+    +{abstract} iniciarTarea()
+    +{abstract} finalizarTarea()
+}
+
+
+class TareaSimple {
+    -duracionEstimada:Integer
+    -inicio:DateTime
+    -fin:DateTime
+    
+    + <<create>> Tarea (nombre:String, descripcion:String, duracionEstimada:int)
+    + estimacionTotalTarea():Integer
+    + tiempoUtilizado():Long
+    + avanceTarea():Long
+    + iniciarTarea()
+    + finalizarTarea()
+}
+
+class TareaCompleja {
+    + <<create>> Tarea (nombre:String, descripcion:String, tareas:Tareas[*])
+    + estimacionTotalTarea():Integer
+    + tiempoUtilizado():Long
+    + avanceTarea():Long
+    + iniciarTarea()
+    + finalizarTarea()
+}
+
+together {
+    class Tarea
+    class State
+}
+
+State <|-- Pendiente
+State <|-- Iniciada
+State <|-- Completada
+Tarea *--> State
+
+abstract class State{
+    + <<create>> State(tarea:TareaSimple)
+    + {abstract} tiempoUtilizado():Long
+    + iniciar()
+    + finalizar()
+}
+
+class Pendiente {
+    + <<create>> Pendiente(tarea:TareaSimple)
+    + tiempoUtilizado():Long
+    + iniciar()
+}
+
+class Iniciada {
+    + <<create>> Iniciada(tarea:TareaSimple)
+    + tiempoUtilizado():Long
+    + finalizar()
+}
+
+class Completada{
+    + <<create>> Completada(tarea:TareaSimple)
+    + tiempoUtilizado():Long
+}
+
+@enduml

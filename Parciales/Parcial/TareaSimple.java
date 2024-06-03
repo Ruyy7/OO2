@@ -30,8 +30,12 @@ public class TareaSimple extends Tarea{
     
     @Override
     public void iniciarTarea() {
-        
-        
+        this.estado.iniciar();
+    }
+
+    @Override
+    public void finalizarTarea() {
+        this.estado.finalizar();
     }
 
     public State getEstado() {

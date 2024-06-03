@@ -11,6 +11,7 @@ public abstract  class Tarea {
     public abstract long timepoUtilizado();
     public abstract long avanceTarea();
     public abstract void iniciarTarea();
+    public abstract void finalizarTarea();
 
     public String getNombre() {
         return nombre;
