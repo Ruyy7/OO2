@@ -1,6 +1,6 @@
 @startuml UML
 Tarea <|-- TareaSimple
-Tarea <|--* "1..*" TareaCompleja: tareas
+Tarea <--* "1..*" TareaCompleja: tareas
 
 together{
     class TareaSimple
@@ -49,7 +49,7 @@ together {
 State <|-- Pendiente
 State <|-- Iniciada
 State <|-- Completada
-Tarea *--> State
+Tarea *--> State : estado
 
 abstract class State{
     + <<create>> State(tarea:TareaSimple)
