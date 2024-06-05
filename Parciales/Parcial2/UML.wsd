@@ -1,0 +1,56 @@
+@startuml
+class HomeWeatherStation{
+    + getTemperaturaFarenheit():Real
+    + getPresion():Real
+    + getRadiacionSolar():Real
+    + getTemperaturasFarenheit():Real[*]
+}
+
+abstract class WeatherStation{
+    +{abstract} getTemperaturaFarenheit():Real
+    +{abstract} getPresion():Real
+    +{abstract} getRadiacionSolar():Real
+    +{abstract} getTemperaturasFarenheit():Real[*]
+    + displayData():String
+}
+
+abstract class Component{
+    + getTemperaturaFarenheit():Real
+    + getPresion():Real
+    + getRadiacionSolar():Real
+    + getTemperaturasFarenheit():Real[*]
+    + displayData():String
+    + getTemperaturaCelcius():Real
+}
+
+class Farenheit{
+    displayData():String
+}
+
+class Celcius{
+    displayData():String
+}
+
+class RadiacionSolar{
+    displayData():String
+}
+
+class PromedioTemperaturasFarenheit{
+    displayData():String
+}
+
+class PromedioTemperaturasCelcius{
+    displayData():String
+}
+
+WeatherStation <|-- HomeWeatherStation
+WeatherStation <|-- Component:wheaterComponent
+skinparam groupInheritance 1
+Component <|-- Farenheit
+Component <|-- Celcius
+Component <|-- RadiacionSolar
+Component <|-- PromedioTemperaturasFarenheit
+Component <|-- PromedioTemperaturasCelcius
+Component o--> WeatherStation
+
+@enduml
