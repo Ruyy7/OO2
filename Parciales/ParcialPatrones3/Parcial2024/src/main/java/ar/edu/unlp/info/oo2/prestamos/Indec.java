@@ -1,13 +1,9 @@
 package ar.edu.unlp.info.oo2.prestamos;
 
-public class Indec {
+public static class Indec {
     private double indiceInflacion;
 
-    public Indec(double indiceInflacion) {
-        this.indiceInflacion = indiceInflacion;
-    }
-
-    public double getIndiceInflacion() {
+    public static double getIndiceInflacion() {
         return indiceInflacion;
     }
 
