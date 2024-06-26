@@ -22,7 +22,7 @@ public class ParcialTest {
 
     @Test
     public void TestConsigna(){
-        prestamo = ramon.solcitarPrestamoSimple(100,10,banco);
+        prestamo = ramon.solcitarPrestamoSimple(100,10,banco.getTasaInteres());
         assertTrue(prestamo.getState() instanceof Aceptado);
         prestamo.pagarCuotaPrestamo();
         assertEquals(9,prestamo.calcularCuotasRestantes());

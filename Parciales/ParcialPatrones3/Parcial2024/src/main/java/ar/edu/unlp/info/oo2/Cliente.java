@@ -24,8 +24,8 @@ public class Cliente {
         return p;
     }
 
-    public Prestamo solcitarPrestamoSimple (double monto, int cantCuotas, Banco banco){
-        return this.solicitarPrestamo(new Simple(monto,cantCuotas,banco.getTasaInteres()));
+    public Prestamo solcitarPrestamoSimple (double monto, int cantCuotas, double interes){
+        return this.solicitarPrestamo(new Simple(monto,cantCuotas,interes));
     }
 
     public Prestamo soliciarPrestamoUva(double monto, int cantCuotas){

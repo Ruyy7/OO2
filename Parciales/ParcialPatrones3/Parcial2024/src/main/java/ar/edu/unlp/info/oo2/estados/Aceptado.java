@@ -19,6 +19,6 @@ public class Aceptado extends Estado {
 
     @Override
     public double gastosCancelacionPrestamo(Prestamo p) {
-        return p.valorAdministrativo() + p.valorSellado();
+        return p.montoRestantePorPagar() + p.valorAdministrativo() + p.valorSellado();
     }
 }
