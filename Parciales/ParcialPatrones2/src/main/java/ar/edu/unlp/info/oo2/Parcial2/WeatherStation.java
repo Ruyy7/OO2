@@ -7,8 +7,5 @@ public abstract class WeatherStation {
     public abstract double getPresion();
     public abstract double getRadiacionSolar();
     public abstract List<Double> getTemperaturasFarenheit();
-
-    public String displayData(){
-        return "";
-    }
+    public abstract String displayData();
 }

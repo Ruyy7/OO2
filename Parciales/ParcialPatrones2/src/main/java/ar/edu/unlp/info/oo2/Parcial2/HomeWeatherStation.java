@@ -1,7 +1,7 @@
 package ar.edu.unlp.info.oo2.Parcial2;
 import java.util.List;
 
-public class HomeWeatherStation extends WeatherStation{
+public class HomeWeatherStation{
     private double temperatura;
     private double presion;
     private double radiacionSolar;

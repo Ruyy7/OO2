@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 public class TestHomeWeather {
-    HomeWeatherStation hws;
+    HomeWeatherStation homeWeatherStation;
+    HomeWeatherStationAdapter homeWeatherStationAdapter;
     Presion presionAtmosferica;
     RadiacionSolar radiacionSolar;
 
@@ -14,12 +15,13 @@ public class TestHomeWeather {
     void setUp() {
     	List<Double> temperaturas= new ArrayList<>();
     	temperaturas.add(80.0); temperaturas.add(75.0); temperaturas.add(64.0);
-    	hws = new HomeWeatherStation(84.0, 1000, 500, temperaturas);
+        homeWeatherStation = new HomeWeatherStation(84.0, 1000, 500, temperaturas);
+    	homeWeatherStationAdapter = new HomeWeatherStationAdapter(homeWeatherStation);
     }
     
     @Test
     public void ejemploParcial(){
-    	presionAtmosferica = new Presion(hws);
+    	presionAtmosferica = new Presion(homeWeatherStationAdapter);
     	radiacionSolar = new RadiacionSolar(presionAtmosferica);
     	System.out.print(radiacionSolar.displayData());
     }
