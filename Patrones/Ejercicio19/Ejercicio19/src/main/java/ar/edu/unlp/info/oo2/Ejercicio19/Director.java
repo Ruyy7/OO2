@@ -7,7 +7,7 @@ public class Director {
 		this.builder = builder;
 	}
 	
-	public Personaje crearPersonaje(String tipo, String nombre) {
+	public Personaje crearPersonaje(String nombre) {
 		builder.crearPersonaje(nombre);
 		builder.equiparArma();
 		builder.equiparArmadura();
